@@ -1,30 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo start</title>
+    <title>hexo-start</title>
     <url>/2025/05/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h3 id="本地搭建-hexo-静态博客"><a href="#本地搭建-hexo-静态博客" class="headerlink" title="本地搭建 hexo 静态博客"></a>本地搭建 hexo 静态博客</h3><ul>
+<li>安装 hexo 框架: 打开 cmd 运行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install -g hexo-cli</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建一个文件夹，如 MyBlog ，进入该文件夹内，右击运行 git ，输入：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hexo init</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成完 hexo 模板，安装 npm ，运行：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>没错，博客的主体部分到此已经完成了，来看看效果吧。运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hexo server</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>这时候打开浏览器，输入 <code>localhost:4000</code> 就可以看到博客目前的样子了。小小激动一下，然后按 <code>Ctrl + C</code> 就可以继续下面的操作了。</p>
+<h3 id="源文件备份"><a href="#源文件备份" class="headerlink" title="源文件备份"></a>源文件备份</h3><ul>
+<li>切记备份好本地的源文件，尤其是 Markdown 文件，其他配置一旦丢失则无法正常写博客，需要从头开始设置</li>
+<li>建议使用 GitHub 同一个仓库备份</li>
+<li>建议每当有一些改动就备份一次，或者每日备份一次</li>
+<li>更多用法请查看 <a href="https://git-scm.com/book/pl/v2/Appendix-C%3A-Git-Commands-Sharing-and-Updating-Projects">Git 文档</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加前面设置好的博客仓库地址</span></span><br><span class="line">git remote add https://github.com/your-name/your-name.github.io.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加并保存当前改动，并记录备注</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;源文件更新&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">建立并切换到新的分支</span></span><br><span class="line">git checkout -b source</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将本地 <span class="built_in">source</span> 分支的全部内容推送到远端仓库的 <span class="built_in">source</span> 分支</span></span><br><span class="line">git push origin source:source</span><br></pre></td></tr></table></figure>
+
+<h3 id="用不同的电脑写博客"><a href="#用不同的电脑写博客" class="headerlink" title="用不同的电脑写博客"></a>用不同的电脑写博客</h3><ul>
+<li><p>当在不同的电脑上写博客时，需要进行基础软件安装，再拉取远端备份 GitHub 的仓库到本地，进行博客的更新</p>
+</li>
+<li><p>下载安装 node.js （<a href="https://nodejs.org/en/">官网下载安装</a>）</p>
+</li>
+<li><p>下载安装 git （<a href="https://git-scm.com/downloads">官网下载安装</a>）</p>
+</li>
+<li><p>安装 hexo 框架: 打开 cmd 运行</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进行本地更新</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">克隆仓库到本地</span></span><br><span class="line">git clone https://github.com/your-name/your-name.github.io.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果本地已经克隆，每次更新博客前都需要拉取最新分支内容</span></span><br><span class="line">git pull origin</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换到对应分支</span></span><br><span class="line">git checkout source</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载butterfly主题 （如果你使用的是butterfly主题）</span></span><br><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 hexo 配置下的全部插件后可以开始更新编辑博客内容</span></span><br><span class="line">npm install</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改内容后记得及时备份一条龙</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;博客更新xxx&quot;</span><br><span class="line">git push origin source:source</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发布推送最新博客内容到域名站点</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g  # 生成静态文件</span><br><span class="line">hexo s  # 本地预览博客效果</span><br><span class="line">hexo d  # 发布最新博客内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="几个常用命令汇总"><a href="#几个常用命令汇总" class="headerlink" title="几个常用命令汇总"></a>几个常用命令汇总</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或 hexo generate，根据源文件生成静态网页</span></span><br><span class="line">hexo d</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或 hexo deploy，发布推送到 GitHub Pages</span></span><br><span class="line">hexo s</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或 hexo server，本地部署测试</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">清空静态网页 cache，然后 hexo d 重新生成</span></span><br></pre></td></tr></table></figure>
+
+
+<p>参考链接：<a href="https://www.philoli.com/building-a-blog-from-scratch/">https://www.philoli.com/building-a-blog-from-scratch/</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>算法学习</title>
-    <url>/2024/12/30/arithmetic/arithmetic/</url>
-    <content><![CDATA[]]></content>
       <categories>
-        <category>算法</category>
+        <category>博客</category>
       </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
   </entry>
   <entry>
     <title>Golang Debug 的正确使用姿势</title>
@@ -91,6 +124,14 @@
         <tag>Golang</tag>
         <tag>依赖管理</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>算法学习</title>
+    <url>/2024/12/30/arithmetic/arithmetic/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
   </entry>
   <entry>
     <title>kafka入门 &amp; 在SpringBoot中的应用</title>

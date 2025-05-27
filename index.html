@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Statboy の せかい</title><meta name="author" content="Statboy"><meta name="copyright" content="Statboy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Just do it"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cris-w.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Statboy の せかい',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://cdn.wujunhui.vip/girlfriend/Rem.JPG);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem1.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.wujunhui.vip/girlfriend/Rem1.JPG);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Statboy の せかい</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Statboy の せかい</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/cris-w" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1508710375@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2025/05/27/hello-world/" title="Hexo start"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem.JPG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo start"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/27/hello-world/" title="Hexo start">Hexo start</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-27T09:32:57.537Z" title="发表于 2025-05-27 17:32:57">2025-05-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/04/01/java/springboot3-native/" title="SpringBoot3 native image 初体验"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://docs.spring.io/spring-boot/_/img/spring-logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot3 native image 初体验"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/04/01/java/springboot3-native/" title="SpringBoot3 native image 初体验">SpringBoot3 native image 初体验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-01T06:44:29.000Z" title="发表于 2025-04-01 14:44:29">2025-04-01</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/native-image/">native-image</a></span></div><div class="content">代码预览这里是代码这里是预览 </div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/12/31/go/go-mod/" title="go mod 依赖管理"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/blog/Golang.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go mod 依赖管理"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/12/31/go/go-mod/" title="go mod 依赖管理">go mod 依赖管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-31T08:44:15.000Z" title="发表于 2024-12-31 16:44:15">2024-12-31</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Golang/">Golang</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Golang/">Golang</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/">依赖管理</a></span></div><div class="content">本文介绍Golang的依赖管理相关，包括go.mod文件中各函数的作用，go mod常用指令和依赖管理相关指令  go mod 文件介绍12345678910111213141516171819202122232425// 模块名module go_server// go sdk 版本go 1.23.4// 当前module(项目)依赖的包require (	// dependency latest)// 排除的第三方包exclude (	// dependency latest)// 修改依赖包路径或版本 (依赖包发生迁移/原始包无法访问/使用本地包替换原始包)replace (	// source latest =&gt; target latest)// 撤回 (当前项目作为其他项目的依赖，如果某个版本出现了问题则可以使用该命令撤回该版本)retract (	// v1.0.0	// v1.0.2)  go mod 命令12345678910111213141516171819202122232425262728# 将模块下载到本地缓存，需要指定模块路径及版本号go...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/12/30/go/go-debug/" title="Golang Debug 的正确使用姿势"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/blog/Golang.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Golang Debug 的正确使用姿势"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/12/30/go/go-debug/" title="Golang Debug 的正确使用姿势">Golang Debug 的正确使用姿势</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-30T15:17:55.000Z" title="发表于 2024-12-30 23:17:55">2024-12-30</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Golang/">Golang</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Golang/">Golang</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Debug/">Debug</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/GoLand/">GoLand</a></span></div><div class="content">环境相关要求本地正确安装Golang环境（建议直接使用GoLand安装最新sdk）！！！ Golang 版本：1.23.4 (推荐1.18及以上) GoLand 版本：2024.3.1   本地调试本地调试就直接在本地通过debug模式执行main函数，并在希望停止的地方添加断点。（具体操作不在赘述，不会本地调试建议在b占搜索相关视频学习） 附加到进程附加到进程就是在给本地一个正在运行的go进程添加断点调试。 步骤1. 安装 gops 包1go install github.com/google/gops@latest  安装后检查在本地$&#123;GOPATH&#125;/bin目录下是否存在gops，存在即安装成功 步骤2. 构建并运行程序12345# 构建go build -gcflags=&quot;all=-N -l&quot; -o &lt;appName&gt;# 运行./&lt;appName&gt;  步骤3. 附加并调试正在运行的进程点击功能菜单 Run -&gt; Attach to...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/12/30/arithmetic/arithmetic/" title="算法学习"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem1.JPG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法学习"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/12/30/arithmetic/arithmetic/" title="算法学习">算法学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-30T11:18:07.000Z" title="发表于 2024-12-30 19:18:07">2024-12-30</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/01/15/java/kafka/" title="kafka入门 &amp; 在SpringBoot中的应用"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/blog/kafka.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kafka入门 &amp; 在SpringBoot中的应用"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/01/15/java/kafka/" title="kafka入门 &amp; 在SpringBoot中的应用">kafka入门 &amp; 在SpringBoot中的应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-14T17:10:26.000Z" title="发表于 2024-01-15 01:10:26">2024-01-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T09:32:57.537Z" title="更新于 2025-05-27 17:32:57">2025-05-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/kafka/">kafka</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></span></div><div class="content">代码预览这里是代码这里是预览 </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem1.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Statboy</div><div class="author-info-description">Just do it</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cris-w"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/cris-w" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1508710375@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">无论何时都不要后悔我们的相遇</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/27/hello-world/" title="Hexo start"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem.JPG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo start"/></a><div class="content"><a class="title" href="/2025/05/27/hello-world/" title="Hexo start">Hexo start</a><time datetime="2025-05-27T09:32:57.537Z" title="发表于 2025-05-27 17:32:57">2025-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/01/java/springboot3-native/" title="SpringBoot3 native image 初体验"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://docs.spring.io/spring-boot/_/img/spring-logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot3 native image 初体验"/></a><div class="content"><a class="title" href="/2025/04/01/java/springboot3-native/" title="SpringBoot3 native image 初体验">SpringBoot3 native image 初体验</a><time datetime="2025-04-01T06:44:29.000Z" title="发表于 2025-04-01 14:44:29">2025-04-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/go/go-mod/" title="go mod 依赖管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/blog/Golang.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go mod 依赖管理"/></a><div class="content"><a class="title" href="/2024/12/31/go/go-mod/" title="go mod 依赖管理">go mod 依赖管理</a><time datetime="2024-12-31T08:44:15.000Z" title="发表于 2024-12-31 16:44:15">2024-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/go/go-debug/" title="Golang Debug 的正确使用姿势"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/blog/Golang.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Golang Debug 的正确使用姿势"/></a><div class="content"><a class="title" href="/2024/12/30/go/go-debug/" title="Golang Debug 的正确使用姿势">Golang Debug 的正确使用姿势</a><time datetime="2024-12-30T15:17:55.000Z" title="发表于 2024-12-30 23:17:55">2024-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/arithmetic/arithmetic/" title="算法学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.wujunhui.vip/girlfriend/Rem1.JPG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法学习"/></a><div class="content"><a class="title" href="/2024/12/30/arithmetic/arithmetic/" title="算法学习">算法学习</a><time datetime="2024-12-30T11:18:07.000Z" title="发表于 2024-12-30 19:18:07">2024-12-30</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Golang/"><span class="card-category-list-name">Golang</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"><span class="card-category-list-name">中间件</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Golang/" style="font-size: 1.5em; color: #99a9bf">Golang</a> <a href="/tags/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/" style="font-size: 1.1em; color: #999">依赖管理</a> <a href="/tags/SpringBoot/" style="font-size: 1.5em; color: #99a9bf">SpringBoot</a> <a href="/tags/Debug/" style="font-size: 1.1em; color: #999">Debug</a> <a href="/tags/kafka/" style="font-size: 1.1em; color: #999">kafka</a> <a href="/tags/native-image/" style="font-size: 1.1em; color: #999">native-image</a> <a href="/tags/GoLand/" style="font-size: 1.1em; color: #999">GoLand</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-05-27T09:35:22.543Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Statboy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.mps.gov.cn/#/query/webSearch"><img class="icp-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png"><span>备案号：xxxxxx</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["如果你赶不上凌晨五点的日出，你不妨看看傍晚六点的夕阳，我的意思是任何时候都不晚!","我们终其一生寻找的，应该是自己喜欢的生活方式和想成为的人。多走点弯路没关系，多花点时间在路上也不要紧，和别人所期待的不一样也可以。只要你是在成为你的路上就够了!","希望你有足够多的勇气去面对风，面对雪，面对锣鼓，面对朝阳。希望你自由的或者，永远在看花的路上!"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["如果你赶不上凌晨五点的日出，你不妨看看傍晚六点的夕阳，我的意思是任何时候都不晚!","我们终其一生寻找的，应该是自己喜欢的生活方式和想成为的人。多走点弯路没关系，多花点时间在路上也不要紧，和别人所期待的不一样也可以。只要你是在成为你的路上就够了!","希望你有足够多的勇气去面对风，面对雪，面对锣鼓，面对朝阳。希望你自由的或者，永远在看花的路上!"])
+}
+typedJSFn.run(subtitleType)</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>"use strict";if("serviceWorker"in navigator){navigator.serviceWorker.register("service-worker.js").then((function(reg){reg.onupdatefound=function(){var installingWorker=reg.installing;installingWorker.onstatechange=function(){switch(installingWorker.state){case"installed":if(navigator.serviceWorker.controller){console.log("New or updated content is available.")}else{console.log("Content is now available offline!")}break;case"redundant":console.error("The installing service worker became redundant.");break}}}}))["catch"]((function(e){console.error("Error during service worker registration:",e)}))}</script></body></html>

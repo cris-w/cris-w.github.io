@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo start</title>
+    <url>/2025/05/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>算法学习</title>
+    <url>/2024/12/30/arithmetic/arithmetic/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Golang Debug 的正确使用姿势</title>
+    <url>/2024/12/30/go/go-debug/</url>
+    <content><![CDATA[<h2 id="环境相关"><a href="#环境相关" class="headerlink" title="环境相关"></a>环境相关</h2><div class="note primary flat"><p>要求本地正确安装Golang环境（建议直接使用GoLand安装最新sdk）！！！</p>
+<p>Golang 版本：1.23.4 (推荐1.18及以上)</p>
+<p>GoLand 版本：2024.3.1</p>
+</div>
+
+<h2 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h2><p>本地调试就直接在本地通过<code>debug</code>模式执行<code>main</code>函数，并在希望停止的地方添加断点。（具体操作不在赘述，不会本地调试建议在b占搜索相关视频学习）</p>
+<h2 id="附加到进程"><a href="#附加到进程" class="headerlink" title="附加到进程"></a>附加到进程</h2><p>附加到进程就是在给本地一个正在运行的go进程添加断点调试。</p>
+<h4 id="步骤1-安装-gops-包"><a href="#步骤1-安装-gops-包" class="headerlink" title="步骤1. 安装 gops 包"></a>步骤1. 安装 gops 包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go install github.com/google/gops@latest</span><br></pre></td></tr></table></figure>
+
+<p>安装后检查在本地<code>$&#123;GOPATH&#125;/bin</code>目录下是否存在<code>gops</code>，存在即安装成功</p>
+<h4 id="步骤2-构建并运行程序"><a href="#步骤2-构建并运行程序" class="headerlink" title="步骤2. 构建并运行程序"></a>步骤2. 构建并运行程序</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建</span></span><br><span class="line">go build -gcflags=&quot;all=-N -l&quot; -o &lt;appName&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行</span></span><br><span class="line">./&lt;appName&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤3-附加并调试正在运行的进程"><a href="#步骤3-附加并调试正在运行的进程" class="headerlink" title="步骤3. 附加并调试正在运行的进程"></a>步骤3. 附加并调试正在运行的进程</h4><p>点击功能菜单 <code>Run -&gt; Attach to Process...</code>，在弹出窗口选择当前正在运行的go进程即可进行调试，具体调试操作同本地调试。</p>
+<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><div class="note danger flat"><p>远程调试要求远程计算机与本地具有相同的go环境以及代码，并且暴露调试端口如<code>2345</code></p>
+</div>
+
+<h4 id="步骤1-远程计算机安装-Delve-包"><a href="#步骤1-远程计算机安装-Delve-包" class="headerlink" title="步骤1. 远程计算机安装 Delve 包"></a>步骤1. 远程计算机安装 Delve 包</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go install github.com/go-delve/delve/cmd/dlv@latest</span><br></pre></td></tr></table></figure>
+
+<p>安装后检查在本地<code>$&#123;GOPATH&#125;/bin</code>目录下是否存在<code>dlv</code>，存在即安装成功</p>
+<h4 id="步骤2-远程计算机构建并运行程序"><a href="#步骤2-远程计算机构建并运行程序" class="headerlink" title="步骤2. 远程计算机构建并运行程序"></a>步骤2. 远程计算机构建并运行程序</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建</span></span><br><span class="line">go build -gcflags=&quot;all=-N -l&quot; -o &lt;appName&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">方案一</span></span><br><span class="line">dlv --listen=:2345 --headless=true --api-version=2 exec ./&lt;appName&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">方案二</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行程序</span></span><br><span class="line">./&lt;appName&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取进程号 &lt;PID&gt;</span></span><br><span class="line">ps -ef | grep &lt;appName&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行 delve</span></span><br><span class="line">dlv --listen=:2345 --headless=true --api-version=2 attach &lt;PID&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤3-本地计算机上创建-Go-Remote-运行-x2F-调试配置"><a href="#步骤3-本地计算机上创建-Go-Remote-运行-x2F-调试配置" class="headerlink" title="步骤3. 本地计算机上创建 Go Remote 运行&#x2F;调试配置"></a>步骤3. 本地计算机上创建 Go Remote 运行&#x2F;调试配置</h4><ol>
+<li>点击编辑 | 运行配置。或者，单击工具栏上的运行&#x2F;调试配置列表并选择<code>Edit Configurations</code>。</li>
+<li>在Run&#x2F;Debug Configurations对话框中，单击Add按钮 <code>+</code> 并选择<code>Go Remote</code>。</li>
+<li>在主机字段中，输入主机 IP 地址（例如<code>192.168.1.33</code>）。</li>
+<li>在端口字段中，键入您在步骤 2中配置的调试器端口（例如，<code>2345</code>）。</li>
+<li>单击确定。</li>
+<li>具体调试过程同本地调试。</li>
+</ol>
+<div class="note info flat"><p>本文简要介绍有关调试的核心操作，更详细的介绍可以参考<a href="https://www.javatiku.cn/goland/2609.html">此处</a></p>
+</div>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>Debug</tag>
+        <tag>GoLand</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>go mod 依赖管理</title>
+    <url>/2024/12/31/go/go-mod/</url>
+    <content><![CDATA[<div class="note primary flat"><p>本文介绍Golang的依赖管理相关，包括go.mod文件中各函数的作用，go mod常用指令和依赖管理相关指令</p>
+</div>
+<h2 id="go-mod-文件介绍"><a href="#go-mod-文件介绍" class="headerlink" title="go mod 文件介绍"></a>go mod 文件介绍</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 模块名</span></span><br><span class="line">module go_server</span><br><span class="line"><span class="comment">// go sdk 版本</span></span><br><span class="line"><span class="keyword">go</span> <span class="number">1.23</span><span class="number">.4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前module(项目)依赖的包</span></span><br><span class="line">require (</span><br><span class="line">	<span class="comment">// dependency latest</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 排除的第三方包</span></span><br><span class="line">exclude (</span><br><span class="line">	<span class="comment">// dependency latest</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改依赖包路径或版本 (依赖包发生迁移/原始包无法访问/使用本地包替换原始包)</span></span><br><span class="line">replace (</span><br><span class="line">	<span class="comment">// source latest =&gt; target latest</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 撤回 (当前项目作为其他项目的依赖，如果某个版本出现了问题则可以使用该命令撤回该版本)</span></span><br><span class="line">retract (</span><br><span class="line">	<span class="comment">// v1.0.0</span></span><br><span class="line">	<span class="comment">// v1.0.2</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="go-mod-命令"><a href="#go-mod-命令" class="headerlink" title="go mod 命令"></a>go mod 命令</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将模块下载到本地缓存，需要指定模块路径及版本号</span></span><br><span class="line">go mod download</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go mod download github.com/gin-gonic/gin@v1.9.0</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化模块到到当前目录</span></span><br><span class="line">go mod init</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go mod init myApp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加缺少依赖，删除未使用依赖 (常用！)</span></span><br><span class="line">go mod tidy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过工具或脚本编辑go.mod</span></span><br><span class="line">go mod edit</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go mod edit -require=&quot;github.com/gin-gonic/gin v1.10.0&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">根据go.mod中的依赖制作vendor副本，有了vendor本地项目不再依赖本地缓存</span></span><br><span class="line">go mod vendor</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">验证依赖是否正确</span></span><br><span class="line">go mod verify</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">返回对指定模块依赖关系的最短路径，解释为什么依赖指定包</span></span><br><span class="line">go mod why</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go mod why github.com/go-playground/validator/v10</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="go-install-x2F-get-x2F-clean"><a href="#go-install-x2F-get-x2F-clean" class="headerlink" title="go install&#x2F;get&#x2F;clean"></a>go install&#x2F;get&#x2F;clean</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">go install 安装可执行插件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go install github.com/go-delve/delve/cmd/dlv@latest</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">go get 获取模块信息并更新 go.mod，若本地缓存没有该模块，则下载，反正直接引用</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line">go get github.com/gin-gonic/gin@1.9.0</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">go get -u 更新依赖模块，并更新mo.mod</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">go clean 清理临时目录中的文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如清除整个module下载的缓存文件</span></span><br><span class="line">go clean -modcache</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>Golang</tag>
+        <tag>依赖管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kafka入门 &amp; 在SpringBoot中的应用</title>
+    <url>/2024/01/15/java/kafka/</url>
+    <content><![CDATA[<div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">代码</button><button type="button" class="tab">预览</button></div><div class="tab-contents"><div class="tab-item-content active"><p>这里是代码</p></div><div class="tab-item-content"><p>这里是预览</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+]]></content>
+      <categories>
+        <category>中间件</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot3 native image 初体验</title>
+    <url>/2025/04/01/java/springboot3-native/</url>
+    <content><![CDATA[<div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">代码</button><button type="button" class="tab">预览</button></div><div class="tab-contents"><div class="tab-item-content active"><p>这里是代码</p></div><div class="tab-item-content"><p>这里是预览</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+]]></content>
+      <categories>
+        <category>中间件</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>native-image</tag>
+      </tags>
+  </entry>
+</search>
